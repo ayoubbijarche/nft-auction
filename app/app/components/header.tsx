@@ -17,39 +17,37 @@ const solanaWeb3JsAdapter = new SolanaAdapter({
 const projectId = '7da33be4867b0f505ea58b982f6105e7'
 
 const metadata = {
-  name: 'AppKit',
-  description: 'AppKit Solana Example',
-  url: 'https://example.com', // origin must match your domain & subdomain
+  name: 'ayoubnft',
+  description: 'solana nft auction',
+  url: 'https://ayoubnftauction.com', 
   icons: ['https://avatars.githubusercontent.com/u/179229932']
 }
 
-// 3. Create modal
 createAppKit({
   adapters: [solanaWeb3JsAdapter],
   networks: [solana, solanaTestnet, solanaDevnet],
   metadata: metadata,
   projectId,
   features: {
-    analytics: true // Optional - defaults to your Cloud configuration
+    analytics: true
   }
 })
 
 
-
 function shrinkString(input: string, startLength: number, endLength: number): string {
     if (startLength + endLength >= input.length) {
-        return input; // Return the string as is if it cannot be shrunk
+        return input; 
     }
-    const start = input.slice(0, startLength); // Get the first part
-    const end = input.slice(-endLength); // Get the last part
+    const start = input.slice(0, startLength); 
+    const end = input.slice(-endLength); 
     return `${start}...${end}`;
 }
 
 
 export function Header() {
   const accountdata  = useAppKitAccount()
-  const {disconnect} = useDisconnect()
-  return (
+  const {disconnect} = useDisconnect()   
+    return (
     <header className="border-b">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
@@ -66,7 +64,7 @@ export function Header() {
             <div className="relative pr-0">
               {accountdata.isConnected ? (
                 <div className="flex items-center gap-2">
-                  <h1>{shrinkString(accountdata.address.toString() , 3 , 4)}</h1>
+                  <h1>{shrinkString(accountdata.address?.toString() , 3 , 4)}</h1>
                     <Button
                       variant="outline"
                       size="sm"
